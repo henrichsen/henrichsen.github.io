@@ -1,1 +1,18 @@
-
+*{
+  font-family: Gotham;
+  color: #141414;
+      
+}
+p{
+  text-size:14px;
+  text-align: left;  
+}
+.dropbtn{
+  background-color: #5FC9B;
+  color: #666666;
+  text-size: 19px;
+    
+  width:150px;
+  max-width: 75%;
+    
+}
