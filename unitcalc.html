@@ -1,0 +1,86 @@
+<head>
+  <script>
+    function inputans(){
+let input= document.getElementById("input").vlaue;
+let inUnits=document.getElementById("input_units").value;
+let outUnits= document.getElementById("output_units").value;
+  
+  document.getElementById("ans").innerHTML=calc((input),(inUnits),(outUnits));
+}
+function calc (i, iunit, ounit) {
+  let n=1;
+switch (iunit){
+  case "0":
+    n=n/12;
+    break;
+  case "1":
+    break;
+  case "2":
+    n*=3;
+    break;
+  case "3":
+    n*=5280;
+  case "4":
+    n*=1000;
+  case "5":
+    n*=3.28084;
+    break;
+  default:
+    document.getElementById("ans").innerHTML="ERROR";
+    break;
+}
+  
+  
+switch (ounit){
+  case "0":
+    n*=12;
+    break;
+  case "1":
+    break;
+  case "2":
+    n/=3;
+    break;
+  case "3":
+    n/=5280;
+  case "4":
+    n/=1000;
+  case "5":
+    n/=3.28084;
+    break;
+  default:
+    document.getElementById("ans").innerHTML="ERROR2";
+    break;
+}
+//  document.getElementById("test").innerHTML="made it";
+return parseInt(i)*n;
+//return n;
+}
+
+  </script>
+</head>
+<body>
+  <input type="number" class="in" id="input">
+  <Br>
+  <select id="input_units">
+    <option value="0">inches</option>
+    <option value="1">feet</option>
+    <option value="2">yards</option>
+    <option value="3">miles</option>
+    <option value="5">meters</option>
+    <option value="4">kilometers</option>
+  </select>
+  <br>
+    <select id="output_units">
+    <option value="0">inches</option>
+    <option value="1">feet</option>
+    <option value="2">yards</option>
+    <option value="3">miles</option>
+    <option value="5">meters</option>
+    <option value="4">kilometers</option>
+  </select>
+    <br>
+    <button id="click" onclick="inputans()">Click me</button>
+    <br>
+    <div id="test"></div>
+    <div id="ans"></div>
+</body>
