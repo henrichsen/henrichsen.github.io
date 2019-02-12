@@ -1,15 +1,18 @@
 <head>
   <style>
-   *{
-     text-family: Georgia;
+   body{
+  text-align: center;
+     color: #141414;
+     background-color: beige;
     }
-    p,span{
-    color: #666666;
-}
+
 #ans{
    background-color: royalblue;
-  width:50%;
-  height:20%;
+  width: 150px;
+  height: 125px;
+  vertical-align: top;
+  display: inline-block;
+  *display: inline;
     }
   </style>
   <script>
@@ -18,7 +21,7 @@ let input= document.getElementById("input").value;
 let inUnits=document.getElementById("input_units").value;
 let outUnits= document.getElementById("output_units").value;
   
-  document.getElementById("ans").innerHTML="is "calc((input),(inUnits),(outUnits));
+  document.getElementById("ans").innerHTML="is "+calc((input),(inUnits),(outUnits));
 }
 function calc (i, iunit, ounit) {
   let n=1;
