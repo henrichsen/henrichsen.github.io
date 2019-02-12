@@ -6,7 +6,11 @@
     p,span{
     color: #666666;
 }
-
+#ans{
+   background-color: royalblue;
+  width:50%;
+  height:20%;
+    }
   </style>
   <script>
     function inputans(){
@@ -14,7 +18,7 @@ let input= document.getElementById("input").value;
 let inUnits=document.getElementById("input_units").value;
 let outUnits= document.getElementById("output_units").value;
   
-  document.getElementById("ans").innerHTML=calc((input),(inUnits),(outUnits));
+  document.getElementById("ans").innerHTML="is "calc((input),(inUnits),(outUnits));
 }
 function calc (i, iunit, ounit) {
   let n=1;
@@ -68,8 +72,7 @@ return parseInt(i)*n;
   </script>
 </head>
 <body>
-  Convert <input type="number" class="in" id="input">
-  <Br>
+  Convert <input type="number" class="in" id="input">  
   <select id="input_units">
     <option value="0">inches</option>
     <option value="1">feet</option>
