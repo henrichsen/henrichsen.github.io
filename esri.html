@@ -1,1 +1,236 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        html, body, #mappy {
+            height: 90%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.8/"></script>
+    <script>
 
+        require(["esri/Map","esri/views/MapView", "esri/tasks/Locator",], function(Map,MapView,Locator) {
+            var locatorTask = new Locator({
+                url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+            });
+
+
+
+
+            const map = new Map({
+                basemap: "streets-navigation-vector",
+            });
+            const view = new MapView({
+                container: "mappy",
+                map: map,
+                zoom: 2,
+
+            });
+
+            view.popup.autoOpenEnabled = false;
+            view.on("click", function(event) {
+                // Get the coordinates of the click on the view
+                // around the decimals to 3 decimals
+                var lat = Math.round(event.mapPoint.latitude * 1000) / 1000;
+                var lon = Math.round(event.mapPoint.longitude * 1000) / 1000;
+                view.popup.content = "It's not as cool as where I want to go.";
+                view.popup.open({
+                    // Set the popup's title to the coordinates of the clicked location
+                    title: "You click at: [" + lon + ", " + lat + "]",
+                    location: event.mapPoint // Set the location of the popup to the clicked location
+
+                });
+            });
+
+
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:  44.036455,
+                    latitude: 36.190046,
+                },
+                popupTemplate: {
+                    title: "Erbil",
+                    content: "<p> A major city in Kurdistan. If it ever becomes stable, I would like to visit</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude: 5.610579,
+                    latitude: 52.256448,
+                },popupTemplate: {
+                    title: "Puten",
+                    content: "<p> This is where my dad was born. He was born in his grandparent's living room.</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude: 4.691207,
+                    latitude:  51.805551,
+                },popupTemplate: {
+                    title: "Dordrecht Winter Market",
+                    content: "<p> The Dordrecht winter market is one of the biggest in the world. The entire city effectively turns into one large market.</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:  35.211297,
+                    latitude:  31.768090,
+                },popupTemplate: {
+                    title: "Jerusalem",
+                    content: "<p> Jesus was here</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:   12.540181,
+                    latitude:  55.684967,
+                },popupTemplate: {
+                    title: "Copenhagen",
+                    content: "<p>It would be nice to vist the country where my last name comes from. </p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:   12.540181,
+                    latitude:  55.684967,
+                },popupTemplate: {
+                    title: "May Pen",
+                    content: "<p>I had a companion on my mission from here. It would be nice to have him show me the country.</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:   -55.205657,
+                    latitude:   5.860273,
+                },popupTemplate: {
+                    title: "Paramaribo",
+                    content: "<p>Everybody comes from Paramaribo</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:   9.954790,
+                    latitude:    53.600106,
+                },popupTemplate: {
+                    title: "Hamburg",
+                    content: "<p>They claim to have the best sausages in the world</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:   4.317764,
+                    latitude:    50.845931,
+                },popupTemplate: {
+                    title: "Brussels",
+                    content: "<p>It would be lovely to spend a day taste testing belgian chocolates</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:   4.317764,
+                    latitude:    50.845931,
+                },popupTemplate: {
+                    title: "Berlin",
+                    content: "<p>Seeing where the Berlin wall stood would be eye opening.</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:    -98.493300,
+                    latitude:   29.413439,
+                },popupTemplate: {
+                    title: "San Antonio",
+                    content: "<p>It would be nice to walk along the river walk again</p>"
+                }
+            });
+            view.graphics.add({
+                symbol: {
+                    type: "simple-marker",
+                    color: "cyan"
+                },
+                geometry: {
+                    type: "point",
+                    longitude:    -90.880633,
+                    latitude:    32.333813,
+                },popupTemplate: {
+                    title: "Vicksburg",
+                    content: "<p>The last major battle in the Civil War. It was a brutal defeat for the confederates.</p>"
+                }
+            });
+
+
+
+
+
+
+
+
+        });
+    </script>
+</head>
+<body id="claro">
+<div id="mappy">
+</div>
+<div id="meta">
+    <h1>Show Off ArcGIS JavaScript Capabilities</h1>
+    <p>2/14/2018</p>
+</div>
+</body>
