@@ -1,0 +1,55 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+        html, body, #mappy {
+            height: 90%;
+            padding: 0;
+            margin: 0;
+        }
+        img{
+            width:auto;
+            height: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+    <script src="https://js.arcgis.com/4.8/"></script>
+    <script>
+
+        require(["esri/Map", "esri/config","esri/layers/MapImageLayer","esri/views/MapView", "esri/tasks/Locator"], function(Map, esriConfig,MapImageLayer,MapView,Locator)
+        {
+
+            const map = new Map({
+                basemap: "streets-navigation-vector",
+            });
+            const view = new MapView({
+                container: "mappy",
+                map: map,
+                zoom: 2,
+
+            });
+            var layer = new MapImageLayer(
+            {
+            url: "http://geoserver2.byu.edu/arcgis/rest/services/Motus",
+            crossOrigin: "anonymous",
+
+            });
+
+map.add(layer);
+
+
+
+        });
+    </script>
+</head>
+<body id="claro">
+<div id="mappy">
+</div>
+<div id="meta">
+    <h1>Use Ubuntu and PyCharm to Show your Local Data in ArcMap JavaScript</h1>
+    <p>2/28/2018</p>
+    <p>By Hart Henrichsen</p>
+</div>
+<hr>
+<p>last update: 2/28/2019 Author: Henrichsen Copyright: public</p>
+</body>
