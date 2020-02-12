@@ -1,31 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple Map</title>
-    <meta name="viewport" content="initial-scale=1.0">
-    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+          integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
     <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
+      #mapid{
+        height:800px;
       }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
+      *{
+        font-family: "Viner Hand ITC";
+        text-align: center;
       }
-    </style>
+      p{
+        color:#666666;
+        font-family: Magneto;
+        }
+      h1{
+        font-family: "Comic Sans MS";
+      }
+      b{
+        color:darkgreen;
+        font-size: 18px;
+        text-decoration: underline;
+        font-family: Stencil;
+      }
+        </style>
   </head>
   <body>
-    <div id="map"></div>
-    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
-        });
-      }
-    </script>
+    <div id="mapid"></div>
+  <H1>My first Leaflet Map</H1>
+  <p>By Hart Henrichsen on 2/12/2020 for CEEN 514</p>
+  </body>
+
+
+<script>
+  var mymap=L.map('mapid').setView([38.3579,-76.4435],12);
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      accessToken: 'pk.eyJ1IjoiaGVucmljaGEiLCJhIjoiY2s2amp3eWRsMGNqcTNqbWZtaXB5aXBtdyJ9.2BuMcpCQv9bdVF1wqzzZ7g'
+  }).addTo(mymap);
+
+  var home = L.marker([38.3645, -76.417040]).addTo(mymap);
+  var church = L.marker([38.291888, -76.512075]).addTo(mymap);
+  var school= L.marker([38.355250, -76.440636]).addTo(mymap);
+  var death=L.circle([38.434056, -76.442399], {
+      color:'#EE3471',
+      fillOpacity:.75,
+      fillColor:'#FF5400',
+      radius: 8100,
+  }).addTo(mymap);
+  var oldChurch = L.polygon([[38.325022, -76.461355],[38.325451, -76.460094],[38.325470, -76.459528],[38.324633, -76.458192],[38.324203, -76.458648],[38.324502, -76.459887],[38.324866, -76.460756],[38.324750, -76.461193]],{color:'#FFFF00'}).addTo(mymap);
+  home.bindPopup("<b>Home</b><br>Or close enough.");
+  church.bindPopup("<b>My Church</b><br> Now with new electrical and plumbing!")
+  school.bindPopup("<b>Patuxent High School</b><br> Go Panthers!");
+  death.bindPopup("<b>5 mile death zone from local nuclear power plant</b><br> Have a nice day!");
+  oldChurch.bindPopup("<b>Our Lady Star of the Sea Catholic Church</b><br> Both Old and New.");
+
+
+</script>
