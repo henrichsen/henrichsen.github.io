@@ -49,6 +49,10 @@
 var wmsLayer = L.tileLayer.wms('https://demo.boundlessgeo.com/geoserver/ows?', {
     layers: 'nasa:bluemarble'
 }).addTo(map);
-
+var wmsLayer = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-2d9787bf36d04c9383e595d179f9298b/wms?', {
+    layers: 'GIS Gridded_HydroMet_Elevation_m',
+  format:'image/png';
+  transparent:true;
+}).addTo(map);
 
 </script>
