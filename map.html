@@ -32,7 +32,7 @@
   </head>
   <body>
     <div id="mapid"></div>
-  <H1>My first Leaflet Map</H1>
+  <H1>My Leaflet Map with WMS</H1>
   <p>By Hart Henrichsen on 2/12/2020 for CEEN 514</p>
   </body>
 
@@ -46,21 +46,13 @@
       accessToken: 'pk.eyJ1IjoiaGVucmljaGEiLCJhIjoiY2s2amp3eWRsMGNqcTNqbWZtaXB5aXBtdyJ9.2BuMcpCQv9bdVF1wqzzZ7g'
   }).addTo(mymap);
 
-  var home = L.marker([38.3645, -76.417040]).addTo(mymap);
-  var church = L.marker([38.291888, -76.512075]).addTo(mymap);
-  var school= L.marker([38.355250, -76.440636]).addTo(mymap);
-  var death=L.circle([38.434056, -76.442399], {
-      color:'#EE3471',
-      fillOpacity:.75,
-      fillColor:'#FF5400',
-      radius: 8100,
-  }).addTo(mymap);
-  var oldChurch = L.polygon([[38.325022, -76.461355],[38.325451, -76.460094],[38.325470, -76.459528],[38.324633, -76.458192],[38.324203, -76.458648],[38.324502, -76.459887],[38.324866, -76.460756],[38.324750, -76.461193]],{color:'#FFFF00'}).addTo(mymap);
-  home.bindPopup("<b>Home</b><br>Or close enough.");
-  church.bindPopup("<b>My Church</b><br> Now with new electrical and plumbing!")
-  school.bindPopup("<b>Patuxent High School</b><br> Go Panthers!");
-  death.bindPopup("<b>5 mile death zone from local nuclear power plant</b><br> Have a nice day!");
-  oldChurch.bindPopup("<b>Our Lady Star of the Sea Catholic Church</b><br> Both Old and New.");
-
+var wmsLayer = L.tileLayer.wms('https://demo.boundlessgeo.com/geoserver/ows?', {
+    layers: 'nasa:bluemarble'
+}).addTo(map);
+var wmsLayer = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-2d9787bf36d04c9383e595d179f9298b/wms?', {
+    layers: 'GIS Gridded_HydroMet_Elevation_m',
+  format:'image/png';
+  transparent:true;
+}).addTo(map);
 
 </script>
