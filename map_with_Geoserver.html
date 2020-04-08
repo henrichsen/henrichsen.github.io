@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+        <script src="../lib/require.js" data-main="app"></script>
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
           integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
           crossorigin=""/>
@@ -38,6 +40,17 @@
 
 
 <script>
+  
+  requirejs.config({
+    'baseUrl': '../lib',
+    'paths': {
+        'leaflet.wms': '../dist/leaflet.wms' //.js'
+    }
+});
+  
+  
+  
+  
   var mymap=L.map('mapid').setView([38.3579,-76.4435],12);
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -48,11 +61,11 @@
 
 var wmsLayer = L.tileLayer.wms('https://demo.boundlessgeo.com/geoserver/ows?', {
     layers: 'nasa:bluemarble'
-}).addTo(map);
+}).addTo(mymap);
 var wmsLayer = L.tileLayer.wms('https://geoserver.hydroshare.org/geoserver/HS-2d9787bf36d04c9383e595d179f9298b/wms?', {
     layers: 'GIS Gridded_HydroMet_Elevation_m',
   format:'image/png',
   transparent:true,
-}).addTo(map);
+}).addTo(mymap);
 
 </script>
