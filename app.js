@@ -14,7 +14,7 @@ var tiledMap = createMap('tiled-map', true);
 function createMap(div, tiled) {
     // Map configuration
     var map = L.map(div);
-    map.setView([45, -93.2], 6);
+    map.setView([39, -111], 6);
 
     var basemaps = {
         'Basemap': basemap().addTo(map),
