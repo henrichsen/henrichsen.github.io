@@ -23,11 +23,11 @@ function createMap(div, tiled) {
 
     // Add WMS source/layers
     var source = wms.source(
-        "http://ows.terrestris.de/osm/service",
+        "https://ows.terrestris.de/osm/service",
         {
             "format": "image/png",
             "transparent": "true",
-            "attribution": "<a href='http://ows.terrestris.de/'>terrestris</a>",
+            "attribution": "<a href='https://ows.terrestris.de/'>terrestris</a>",
             "info_format": "text/html",
             "tiled": tiled
         }        
