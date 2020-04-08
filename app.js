@@ -23,7 +23,7 @@ function createMap(div, tiled) {
 
     // Add WMS source/layers
     var source = wms.source(
-        "https://ows.terrestris.de/osm/service",
+        "https://geoserver.hydroshare.org/geoserver/HS-4ba0aff5f1c844e696edc01a2a40f82e/wms?",
         {
             "format": "image/png",
             "transparent": "true",
@@ -34,8 +34,8 @@ function createMap(div, tiled) {
     );
 
     var layers = {
-        'Topographic': source.getLayer("TOPO-WMS").addTo(map),
-        'OSM Overlay': source.getLayer("OSM-Overlay-WMS").addTo(map)
+        'Topographic': source.getLayer("Counties").addTo(map),
+        'OSM Overlay': source.getLayer("Roads").addTo(map)
     };
 
     // Create layer control
